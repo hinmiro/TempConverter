@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/hinmiro/timeCalculator.git'
+                git 'https://github.com/hinmiro/TempConverter.git'
             }
         }
 
