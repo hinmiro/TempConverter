@@ -14,18 +14,13 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+
+
+
     <build>
+        <finalName>temperatureConverter</finalName>
         <plugins>
-            <!-- Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
 
             <!-- Surefire Plugin for Unit Testing -->
             <plugin>
@@ -39,26 +34,15 @@
                 </configuration>
             </plugin>
 
-            <!-- Jacoco Plugin for Code Coverage -->
+            <!-- Compiler Plugin for setting the Java version -->
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
             </plugin>
 
             <!-- Javadoc Plugin -->
@@ -73,20 +57,37 @@
                 </configuration>
             </plugin>
 
-            <!-- Checkstyle Plugin -->
+            <!-- JAR Plugin for configuring the manifest file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.4.0</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
                 <configuration>
-                    <configLocation>google_checks.xml</configLocation>
-                    <failsOnError>true</failsOnError>
+                    <archive>
+                        <manifest>
+                            <mainClass>TemperatureConverter</mainClass> <!-- Correct main class -->
+                        </manifest>
+                    </archive>
                 </configuration>
+            </plugin>
+
+            <!-- JaCoCo Plugin for code coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
                 <executions>
                     <execution>
-                        <phase>verify</phase>
+                        <id>jacoco-initialize</id>
                         <goals>
-                            <goal>checkstyle</goal>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>

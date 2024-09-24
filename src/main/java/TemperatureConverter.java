@@ -7,7 +7,7 @@ public class TemperatureConverter {
      * @param fahrenheit The temperature in Fahrenheit.
      * @return The temperature in Celsius.
      */
-    public double fahrenheitToCelsius(double fahrenheit) {
+    public static double fahrenheitToCelsius(double fahrenheit) {
         return (fahrenheit - 32) * 5 / 9;
     }
 
@@ -17,7 +17,7 @@ public class TemperatureConverter {
      * @param celsius The temperature in Celsius.
      * @return The temperature in Fahrenheit.
      */
-    public double celsiusToFahrenheit(double celsius) {
+    public static double celsiusToFahrenheit(double celsius) {
         return (celsius * 9 / 5) + 32;
     }
 
@@ -27,11 +27,19 @@ public class TemperatureConverter {
      * @param celsius The temperature in Celsius.
      * @return True if the temperature is below -40 or above 50, otherwise false.
      */
-    public boolean isExtremeTemperature(double celsius) {
+    public static boolean isExtremeTemperature(double celsius) {
         return celsius < -40 || celsius > 50;
     }
 
-    public float kelvinToCel(float kel) {
+    public static float kelvinToCel(float kel) {
         return (float) (kel - 273.15);
+    }
+
+    public static double kelvinToFah(double kel) {
+        return Math.round((kel - 273.15) * (9 / 5) + 32);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(celsiusToFahrenheit(37.4));
     }
 }
