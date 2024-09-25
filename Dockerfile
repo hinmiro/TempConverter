@@ -2,7 +2,7 @@
 FROM maven:latest
 
 # Set metadata information
-LABEL authors="mirohi"
+LABEL authors="mirohin"
 
 # Set the working directory in the container
 WORKDIR /app
